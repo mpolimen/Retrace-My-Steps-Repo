@@ -1,0 +1,59 @@
+Project Description:
+	A logic-based calculator game named "Retrace my Steps":
+	The user's goal is to go from a starting number to a given end number in a given amount of moves. 
+	They do this using the digits and operations that are provided to them for each level. 
+	Levels will use backtracking and randomness for generation. 
+	User inputs will be through pressing digit keys or by drawing their desired digit input into a canvas,
+	which will be recognized by a neural network trained with the MNIST training set.
+Competitive Analysis:
+	A game on the Play Store titled "Calculator: The Game" inspired the idea for this game after the decision to use MNIST.
+	This term project looks to exceed this game in two major aspects.
+	First, the app only has pre-designed levels and progression. This term project's level generation will extend replayability and length.
+	Second, the ability to draw in digits adds an interesting benefit that the user will be able to enjoy and influence gameplay that is not present in the app.
+
+	Also, many MNIST neural network projects are standard for only learning the basics of machine learning. This implementation of the neural network will serve not only that purpose, as it uses the network in a more practical sense.
+	The graphical interface and user input on computer drawing will make this term project have an advantage over most other implementations of the MNIST neural network project.
+Structural Plan:
+	Files outside of .py files: An image that will be updated to the drawn image to test in the neural network and a .SAV file that stores the pickled neural network.
+	Classes: Button class (for start and help screens), DrawPad class (with saving functionality), Level class (with its own generation), Main script (with tkinter)
+	The Main script will mostly refer to the above classes for implementations, but may hold some helper functions for style and design.
+Algorithmic Plan:
+	Trickiest algorithm (level generation):
+	Will use random to select an amount of moves to be performed.
+	Will select random digits from a list of digits (repeats possible) up to the number of moves.
+	Will select operations to accompany the digits from [+, -, *, /(integer division)].
+	Generate a random number (1-100) as a starting point.
+	While keeping the list of operations to be used in order, select a random number to be used by each operation (will check for n/0).
+	Ex. if start is 5, end is 32, and the number of moves is 3. A possible generation could be...
+	[3, 4, 5] (not order specific) and [+, *, +] (order specific).
+	If the end goal is 32 the users inputs would be 4, 3, 5...
+	Meaning +4, *3, +5 (this is why the generated operations are order specific).
+	And (((5+4)*3)+5) = 32. The numbers given are not order specific to the user because the user selects what order they should be used in.
+
+	Trickiest algorithm(giving a hint):
+	This algorithm will use the backtracking recursion template to find what number could correctly go next.
+	Will return None if the user has already made moves that will not allow them to get to the goal (will posiibly undo the user's last move as a courtesy for wanting a hint).
+	Will use the remaining numbers left to find what next number could be used to get an answer if all other inputs were to be correctly placed afterwords.
+Timeline Plan:
+	Sunday Night: Main game is running with user input from the keys only. Levels are hardcoded at this stage for testing purposes (level generation is a stretch goal).
+	Tuesday Night: Level generation works.
+	Wednesday Night: Implementation of the drawing mechanic with improvements on detection accuracy.
+	Thursday: Continue to update the GUI for a more pleasent experience.
+Version Control Plan:
+	Image included.
+	Google Drive to back up code by uploading the files on a very regular basis to keep updates saved where they can be accessed with the google account from any computer.
+
+
+#####################################
+TP2 Update
+#####################################
+
+Adding a level creating feature where all levels will be saved in a file that can be played seperately from the randomly generated ones.
+Github integration will be looked at for a version control update for TP3.
+
+
+#####################################
+TP3 Update
+#####################################
+Video Demo link: https://youtu.be/gejEF50O1Yw
+Added graphics and some functionality features.
